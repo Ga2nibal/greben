@@ -1,6 +1,5 @@
 package util;
 
-import model.MetersData;
 import model.Motion;
 import model.MotionPeriod;
 import model.OriginalMotionType;
