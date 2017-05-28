@@ -1,9 +1,12 @@
 package model;
 
 
+import org.apache.commons.csv.CSVRecord;
+import parser.csv.CsvParcelable;
+
 import java.security.InvalidParameterException;
 
-public class MetersData {
+public class MetersData implements CsvParcelable {
 
     private static final int MetersDataCount = 22;
 
@@ -89,6 +92,17 @@ public class MetersData {
         this.speed = metersData[i++];
         this.precisionDilution = metersData[i++];
         this.satellites = metersData[i++];
+    }
+
+    public void populateFromCsv(CSVRecord csvRecord) {
+
+        if(null == csvRecord)
+            throw new InvalidParameterException("metersData is not defined");
+        if(csvRecord.size() != MetersDataCount)
+            throw new InvalidParameterException("csvRecord size must be " + MetersDataCount
+                + ". but actual size: " + csvRecord.size());
+
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     public long getTime() {
@@ -386,5 +400,4 @@ public class MetersData {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
-
 }

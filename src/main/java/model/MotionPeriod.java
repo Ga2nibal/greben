@@ -1,8 +1,11 @@
 package model;
 
+import org.apache.commons.csv.CSVRecord;
+import parser.csv.CsvParcelable;
+
 import java.security.InvalidParameterException;
 
-public class MotionPeriodDefinition {
+public class MotionPeriod implements CsvParcelable {
 
     private int sampleId;
     private int motionId;
@@ -11,7 +14,7 @@ public class MotionPeriodDefinition {
     private int endTime;
     private int duration;
 
-    public MotionPeriodDefinition(int sampleId, int motionId, OriginalMotionType originalMotionType, int startTime, int endTime, int duration) {
+    public MotionPeriod(int sampleId, int motionId, OriginalMotionType originalMotionType, int startTime, int endTime, int duration) {
 
         if(null == originalMotionType)
             throw new InvalidParameterException("originalMotionType is not defined. [originalMotionType can not be null");
@@ -23,6 +26,20 @@ public class MotionPeriodDefinition {
         this.endTime = endTime;
         this.duration = duration;
     }
+
+    public void populateFromCsv(CSVRecord csvRecord){
+
+        if(null == csvRecord)
+            throw new InvalidParameterException("csvRecord is not defined.");
+
+        this.sampleId = Integer.parseInt(csvRecord.get("SampleId"));
+        this.motionId = Integer.parseInt(csvRecord.get("MotionId"));;
+        this.originalMotionType = OriginalMotionType.valueOf(csvRecord.get("OriginalMotionType"));
+        this.startTime = Integer.parseInt(csvRecord.get("StartTime"));;
+        this.endTime = Integer.parseInt(csvRecord.get("EndTime"));;
+        this.duration = Integer.parseInt(csvRecord.get("Duration"));;
+    }
+
 
     public int getSampleId() {
         return sampleId;
@@ -77,7 +94,7 @@ public class MotionPeriodDefinition {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MotionPeriodDefinition that = (MotionPeriodDefinition) o;
+        MotionPeriod that = (MotionPeriod) o;
 
         if (sampleId != that.sampleId) return false;
         if (motionId != that.motionId) return false;
