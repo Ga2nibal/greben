@@ -2,6 +2,7 @@ package model;
 
 import java.security.InvalidParameterException;
 import java.util.List;
+//TODO: import java.util.stream;
 
 public class Motion {
 
@@ -9,19 +10,18 @@ public class Motion {
     private List<MetersData> metersData;
     private MotionPeriod motionPeriod;
 
-    public Motion(OriginalMotionType originalMotionType, List<MetersData> metersData,
-                  MotionPeriod motionPeriod) {
+    public Motion(List<MetersData> metersData, MotionPeriod motionPeriod) {
 
-        if(null == originalMotionType)
-            throw new InvalidParameterException("originalMotionType is not defined");
         if(null == metersData)
             throw new InvalidParameterException("metersData is not defined");
         if(null == motionPeriod)
             throw new InvalidParameterException("metersData is not defined");
 
-        this.originalMotionType = originalMotionType;
+        this.originalMotionType = motionPeriod.getOriginalMotionType();
         this.metersData = metersData;
         this.motionPeriod = motionPeriod;
+
+        //TODO: assert (motionPeriod.stream().)
     }
 
     public OriginalMotionType getOriginalMotionType() {
