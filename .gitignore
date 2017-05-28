@@ -15,3 +15,4 @@
 /examples/dotnet/TestExecutor/.vs
 bin
 obj
+/src/main/resources/TaskDefinition
