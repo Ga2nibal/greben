@@ -3,7 +3,7 @@ package parser.csv;
 
 public class SimpleCsvReaderTest extends CsvReaderTest {
 
-    protected CsvReader createCsvReader(long max, long min) {
+    protected CsvReader createCsvReader() {
         return new SimpleCsvReader();
     }
 }
