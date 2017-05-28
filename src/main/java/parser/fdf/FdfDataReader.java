@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface FdfDataReader<T> {
 
-    List<Map<String, String>> parseToMap(Reader reader);
+    List<Map<String, String>> parseToMap(String filepath);
     List<T> parse(Reader reader, Class<T> clazz);
 
     char getDelimiter();

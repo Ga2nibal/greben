@@ -29,10 +29,23 @@ public abstract class FdfDataReaderTest {
             Assert.assertNotNull(result.get(0));
             Assert.assertNotNull(result.get(1));
 
-            MetersData line = result.get(0);
-            Assert.assertEquals(239, line.getTime());
-            Assert.assertEquals(-9.081915, line.getAccelerationX(), 0.0000001);
-            Assert.assertEquals(2.0118165, line.getAccelerationY(), 0.0000001);
+            int i = 0;
+            MetersData line = result.get(i++);
+            //127	1.465752	-2.8740237	9.091495	0.12622166	0.39488763	-0.056743786	-3.375	-4.875	-6.0	-0.7037964	0.07287598	0.16809082	-0.6862793	100272.0	28.4	0.0	0.0	0.0	0.0	0.0	0
+            Assert.assertEquals(127, line.getTime());
+            Assert.assertEquals(1.465752, line.getAccelerationX(), 0.0000001);
+            Assert.assertEquals(-2.8740237, line.getAccelerationY(), 0.0000001);
+            Assert.assertEquals(9.091495, line.getAccelerationZ(), 0.0000001);
+            Assert.assertEquals(0.12622166, line.getLinearAccelerationX(), 0.0000001);
+            //TODO:
+
+            line = result.get(i++);
+            //227	1.4753321	-2.931504	9.129815	0.11986782	0.33545786	-0.016772455	-4.0	-5.125	-6.0	-0.7041626	0.07232666	0.1685791	-0.68585205	100272.0	28.4	0.0	0.0	0.0	0.0	0.0	0
+            Assert.assertEquals(227, line.getTime());
+            Assert.assertEquals(1.4753321, line.getAccelerationX(), 0.0000001);
+            Assert.assertEquals(-2.931504, line.getAccelerationY(), 0.0000001);
+            Assert.assertEquals(9.129815, line.getAccelerationZ(), 0.0000001);
+            Assert.assertEquals(0.11986782, line.getLinearAccelerationX(), 0.0000001);
             //TODO:
         }
     }
