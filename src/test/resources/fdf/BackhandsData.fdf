@@ -1,0 +1,22 @@
+# start time: 10:46:04 2015-03-09
+# video start time: 10:46:05 2015-03-09
+
+%timestamp_unit=TENTH_OF_MILLISECOND
+%sensor_location=EQUIPMENT
+%video_start_time=1425894365193
+%awa_firmware_version=4.528
+%sessions_ids=[41, 42]
+%common_target=2
+%sensor_id=Piq_Babolat 9C:68
+%realtime_disconnections=[]
+%lpf_cutoff_frequency=LPF_41HZ
+%data_type=PFL6
+%application_version=1.0.118
+%this_target=2
+%start_time=1425894364752
+%mpu_rate=HZ100
+
+@Data
+Time	AccelerationX	AccelerationY	AccelerationZ	LinearAccelerationX	LinearAccelerationY	LinearAccelerationZ	GyroX	GyroY	GyroZ	QuaternionW	QuaternionX	QuaternionY	QuaternionZ	Pressure	Temperature	Latitude	Longitude	Altitude	Speed	PrecisionDilution	Satellites
+127	1.465752	-2.8740237	9.091495	0.12622166	0.39488763	-0.056743786	-3.375	-4.875	-6.0	-0.7037964	0.07287598	0.16809082	-0.6862793	100272.0	28.4	0.0	0.0	0.0	0.0	0.0	0
+227	1.4753321	-2.931504	9.129815	0.11986782	0.33545786	-0.016772455	-4.0	-5.125	-6.0	-0.7041626	0.07232666	0.1685791	-0.68585205	100272.0	28.4	0.0	0.0	0.0	0.0	0.0	0

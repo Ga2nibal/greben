@@ -1,4 +1,4 @@
-package parser.csv;
+package parser;
 
 import org.apache.commons.csv.CSVRecord;
 

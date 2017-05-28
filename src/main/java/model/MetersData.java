@@ -2,7 +2,7 @@ package model;
 
 
 import org.apache.commons.csv.CSVRecord;
-import parser.csv.PopulatableFromCsv;
+import parser.PopulatableFromCsv;
 
 import java.security.InvalidParameterException;
 

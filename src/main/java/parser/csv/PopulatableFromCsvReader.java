@@ -2,8 +2,8 @@ package parser.csv;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import parser.PopulatableFromCsv;
 
-import java.io.Console;
 import java.io.Reader;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class PopulatableFromCsvReader<T extends PopulatableFromCsv> implements CsvReader<T> {
 
-    private char delimiter;
+    private char delimiter = ';';
 
     public List<Map<String, String>> parseCsvToMap(Reader reader) {
         throw new UnsupportedOperationException("Not implemented yet");
