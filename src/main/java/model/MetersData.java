@@ -2,11 +2,11 @@ package model;
 
 
 import org.apache.commons.csv.CSVRecord;
-import parser.csv.CsvParcelable;
+import parser.csv.PopulatableFromCsv;
 
 import java.security.InvalidParameterException;
 
-public class MetersData implements CsvParcelable {
+public class MetersData implements PopulatableFromCsv {
 
     private static final int MetersDataCount = 22;
 
@@ -32,6 +32,8 @@ public class MetersData implements CsvParcelable {
     private double speed;
     private double precisionDilution;
     private double satellites;
+
+    public MetersData(){}
 
     public MetersData(long time, double accelerationX, double accelerationY, double accelerationZ,
                       double linearAccelerationX, double linearAccelerationY, double linearAccelerationZ, double qyroX,
@@ -102,7 +104,28 @@ public class MetersData implements CsvParcelable {
             throw new InvalidParameterException("csvRecord size must be " + MetersDataCount
                 + ". but actual size: " + csvRecord.size());
 
-        throw new UnsupportedOperationException("Not implemented yet");
+        this.time = Long.parseLong(csvRecord.get("Time"));
+        this.accelerationX = Double.parseDouble(csvRecord.get("AccelerationX"));
+        this.accelerationY = Double.parseDouble(csvRecord.get("AccelerationY"));
+        this.accelerationZ = Double.parseDouble(csvRecord.get("AccelerationZ"));
+        this.linearAccelerationX = Double.parseDouble(csvRecord.get("LinearAccelerationX"));
+        this.linearAccelerationY = Double.parseDouble(csvRecord.get("LinearAccelerationY"));
+        this.linearAccelerationZ = Double.parseDouble(csvRecord.get("LinearAccelerationZ"));
+        this.qyroX = Double.parseDouble(csvRecord.get("GyroX"));
+        this.qyroY = Double.parseDouble(csvRecord.get("GyroY"));
+        this.qyroZ = Double.parseDouble(csvRecord.get("GyroZ"));
+        this.quaternionW = Double.parseDouble(csvRecord.get("QuaternionW"));
+        this.quaternionX = Double.parseDouble(csvRecord.get("QuaternionX"));
+        this.quaternionY = Double.parseDouble(csvRecord.get("QuaternionY"));
+        this.quaternionZ = Double.parseDouble(csvRecord.get("QuaternionZ"));
+        this.pressure = Double.parseDouble(csvRecord.get("Pressure"));
+        this.temperature = Double.parseDouble(csvRecord.get("Temperature"));
+        this.latitude = Double.parseDouble(csvRecord.get("Latitude"));
+        this.longitude = Double.parseDouble(csvRecord.get("Longitude"));
+        this.altitude = Double.parseDouble(csvRecord.get("Altitude"));
+        this.speed = Double.parseDouble(csvRecord.get("Speed"));
+        this.precisionDilution = Double.parseDouble(csvRecord.get("PrecisionDilution"));
+        this.satellites = Double.parseDouble(csvRecord.get("Satellites"));
     }
 
     public long getTime() {

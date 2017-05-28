@@ -1,11 +1,12 @@
 package model;
 
+import model.declaration.MetersDataDeclaration;
 import org.apache.commons.csv.CSVRecord;
-import parser.csv.CsvParcelable;
+import parser.csv.PopulatableFromCsv;
 
 import java.security.InvalidParameterException;
 
-public class MotionPeriod implements CsvParcelable {
+public class MotionPeriod implements PopulatableFromCsv {
 
     private int sampleId;
     private int motionId;
@@ -13,6 +14,8 @@ public class MotionPeriod implements CsvParcelable {
     private int startTime;
     private int endTime;
     private int duration;
+
+    public MotionPeriod(){}
 
     public MotionPeriod(int sampleId, int motionId, OriginalMotionType originalMotionType, int startTime, int endTime, int duration) {
 
@@ -32,12 +35,13 @@ public class MotionPeriod implements CsvParcelable {
         if(null == csvRecord)
             throw new InvalidParameterException("csvRecord is not defined.");
 
-        this.sampleId = Integer.parseInt(csvRecord.get("SampleId"));
-        this.motionId = Integer.parseInt(csvRecord.get("MotionId"));;
-        this.originalMotionType = OriginalMotionType.valueOf(csvRecord.get("OriginalMotionType"));
-        this.startTime = Integer.parseInt(csvRecord.get("StartTime"));;
-        this.endTime = Integer.parseInt(csvRecord.get("EndTime"));;
-        this.duration = Integer.parseInt(csvRecord.get("Duration"));;
+        this.sampleId = Integer.parseInt(csvRecord.get(MetersDataDeclaration.SampleIdName));
+        this.motionId = Integer.parseInt(csvRecord.get(MetersDataDeclaration.MotionIdName));;
+        this.originalMotionType = OriginalMotionType.valueOf(
+                csvRecord.get(MetersDataDeclaration.OriginalMotionTypeName));
+        this.startTime = Integer.parseInt(csvRecord.get(MetersDataDeclaration.StartTimeName));;
+        this.endTime = Integer.parseInt(csvRecord.get(MetersDataDeclaration.EndTimeName));;
+        this.duration = Integer.parseInt(csvRecord.get(MetersDataDeclaration.DurationName));;
     }
 
 
