@@ -1,6 +1,13 @@
 package model;
 
 public enum OriginalMotionType {
-    BACKHAND_FLAT
-    //TODO: Add OriginalMotionType
+    FOREHAND_FLAT,
+    FOREHAND_LIFTED,
+    FOREHAND_SLICED,
+    BACKHAND_FLAT,
+    BACKHAND_LIFTED,
+    BACKHAND_SLICED,
+    SMASH,
+    VOLLEY_BACKHAND,
+    VOLLEY_FOREHAND
 }
