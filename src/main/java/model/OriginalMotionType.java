@@ -9,5 +9,6 @@ public enum OriginalMotionType {
     BACKHAND_SLICED,
     SMASH,
     VOLLEY_BACKHAND,
-    VOLLEY_FOREHAND
+    VOLLEY_FOREHAND,
+    UNDEFINED
 }
