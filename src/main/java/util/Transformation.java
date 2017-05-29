@@ -1,5 +1,7 @@
 package util;
 
+import javafx.collections.transformation.SortedList;
+import model.MetersData;
 import model.Motion;
 import model.MotionPeriod;
 import model.OriginalMotionType;
@@ -9,10 +11,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Transformation {
 
-    public Map<OriginalMotionType, List<Motion>> collectMotions(List<MotionPeriod> allData,
+    public Map<OriginalMotionType, List<Motion>> collectMotions(List<MetersData> allData,
                                                         List<MotionPeriod> definitions) {
 
         if(null == allData)
@@ -32,8 +35,13 @@ public class Transformation {
         return result;
     }
 
-    private Motion collectMotion(List<MotionPeriod> allData, MotionPeriod period) {
+    private Motion collectMotion(List<MetersData> allData, MotionPeriod period) {
 
-        throw new UnsupportedOperationException("Not implemented yet");
+        List<MetersData> motionPeriods =
+                allData.stream().filter(md -> md.getTime() >= period.getStartTime() &&
+                    md.getTime() <= period.getEndTime()).collect(Collectors.toList());
+
+        Motion result = new Motion(motionPeriods, period);
+        return result;
     }
 }
