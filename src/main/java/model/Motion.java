@@ -2,7 +2,6 @@ package model;
 
 import java.security.InvalidParameterException;
 import java.util.List;
-//TODO: import java.util.stream;
 
 public class Motion {
 
@@ -20,8 +19,6 @@ public class Motion {
         this.originalMotionType = motionPeriod.getOriginalMotionType();
         this.metersData = metersData;
         this.motionPeriod = motionPeriod;
-
-        //TODO: assert (motionPeriod.stream().)
     }
 
     public OriginalMotionType getOriginalMotionType() {

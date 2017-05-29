@@ -104,7 +104,7 @@ public class MetersData implements PopulatableFromCsv {
             throw new InvalidParameterException("csvRecord size must be " + MetersDataCount
                 + ". but actual size: " + csvRecord.size());
 
-        this.time = Long.parseLong(csvRecord.get("Time"));
+        this.time = Long.parseLong(csvRecord.get("Time")); //TODO: in our data time is not second. correct this
         this.accelerationX = Double.parseDouble(csvRecord.get("AccelerationX"));
         this.accelerationY = Double.parseDouble(csvRecord.get("AccelerationY"));
         this.accelerationZ = Double.parseDouble(csvRecord.get("AccelerationZ"));
