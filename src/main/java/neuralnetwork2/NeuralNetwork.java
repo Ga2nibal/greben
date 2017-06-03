@@ -1,31 +1,12 @@
-/**
- * Copyright 2014 Neuroph Project http://neuroph.sourceforge.net
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-package org.neuroph.core;
+package neuralnetwork2;
 
-import org.neuroph.core.data.DataSet;
-import org.neuroph.core.events.NeuralNetworkEvent;
-import org.neuroph.core.events.NeuralNetworkEventListener;
-import org.neuroph.core.exceptions.NeurophException;
-import org.neuroph.core.exceptions.VectorSizeMismatchException;
-import org.neuroph.core.learning.IterativeLearning;
-import org.neuroph.core.learning.LearningRule;
-import org.neuroph.util.NeuralNetworkType;
-import org.neuroph.util.plugins.PluginBase;
-import org.neuroph.util.random.RangeRandomizer;
-import org.neuroph.util.random.WeightsRandomizer;
+import neuralnetwork2.data.DataSet;
+import neuralnetwork2.events.NeuralNetworkEvent;
+import neuralnetwork2.events.NeuralNetworkEventListener;
+import neuralnetwork2.exceptions.NeuroNetworkException;
+import neuralnetwork2.exceptions.VectorSizeMismatchException;
+import neuralnetwork2.learning.IterativeLearning;
+import neuralnetwork2.learning.LearningRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -579,7 +560,7 @@ public class NeuralNetwork<L extends LearningRule> implements Serializable {
             out.writeObject(this);
             out.flush();
         } catch (IOException ioe) {
-            throw new NeurophException("Could not write neural network to file!", ioe);
+            throw new NeuroNetworkException("Could not write neural network to file!", ioe);
         } finally {
             if (out != null) {
                 try {
@@ -611,9 +592,9 @@ public class NeuralNetwork<L extends LearningRule> implements Serializable {
             return nnet;
 
         } catch (IOException ioe) {
-            throw new NeurophException("Could not read neural network file!", ioe);
+            throw new NeuroNetworkException("Could not read neural network file!", ioe);
         } catch (ClassNotFoundException cnfe) {
-            throw new NeurophException("Class not found while trying to read neural network from file!", cnfe);
+            throw new NeuroNetworkException("Class not found while trying to read neural network from file!", cnfe);
         } finally {
             if (oistream != null) {
                 try {
@@ -640,9 +621,9 @@ public class NeuralNetwork<L extends LearningRule> implements Serializable {
             return nnet;
 
         } catch (IOException ioe) {
-            throw new NeurophException("Could not read neural network file!", ioe);
+            throw new NeuroNetworkException("Could not read neural network file!", ioe);
         } catch (ClassNotFoundException cnfe) {
-            throw new NeurophException("Class not found while trying to read neural network from file!", cnfe);
+            throw new NeuroNetworkException("Class not found while trying to read neural network from file!", cnfe);
         } finally {
             if (oistream != null) {
                 try {
@@ -678,9 +659,9 @@ public class NeuralNetwork<L extends LearningRule> implements Serializable {
             return nnet;
 
         } catch (IOException ioe) {
-            throw new NeurophException("Could not read neural network file!", ioe);
+            throw new NeuroNetworkException("Could not read neural network file!", ioe);
         } catch (ClassNotFoundException cnfe) {
-            throw new NeurophException("Class not found while trying to read neural network from file!", cnfe);
+            throw new NeuroNetworkException("Class not found while trying to read neural network from file!", cnfe);
         } finally {
             if (oistream != null) {
                 try {

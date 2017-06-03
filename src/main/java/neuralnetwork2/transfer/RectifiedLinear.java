@@ -1,4 +1,4 @@
-package org.neuroph.core.transfer;
+package neuralnetwork2.transfer;
 
 public class RectifiedLinear extends TransferFunction {
 

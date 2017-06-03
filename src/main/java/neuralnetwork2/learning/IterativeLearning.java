@@ -1,27 +1,13 @@
-/**
- * Copyright 2010 Neuroph Project http://neuroph.sourceforge.net
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-package org.neuroph.core.learning;
+package neuralnetwork2.learning;
+
+import neuralnetwork2.data.DataSet;
+import neuralnetwork2.events.LearningEvent;
+import neuralnetwork2.learning.stop.MaxIterationsStop;
+import neuralnetwork2.learning.stop.StopCondition;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import org.neuroph.core.data.DataSet;
-import org.neuroph.core.events.LearningEvent;
-import org.neuroph.core.learning.stop.MaxIterationsStop;
-import org.neuroph.core.learning.stop.StopCondition;
 
 /**
  * Base class for all iterative learning algorithms. It provides the iterative
@@ -58,7 +44,7 @@ abstract public class IterativeLearning extends LearningRule implements
      */
     private boolean iterationsLimited = false;
    
-    
+
     protected List<StopCondition> stopConditions;
     /**
      * Flag for indicating if learning thread is paused

@@ -1,10 +1,10 @@
-package org.neuroph.core.exceptions;
+package neuralnetwork2.exceptions;
 
 /**
  * Base exception type for Neuroph.
  * @author jheaton
  */
-public class NeurophException extends RuntimeException {
+public class NeuroNetworkException extends RuntimeException {
 	/**
 	 * The version ID.
 	 */
@@ -14,7 +14,7 @@ public class NeurophException extends RuntimeException {
 	/**
 	 * Default constructor.
 	 */
-	public NeurophException() {
+	public NeuroNetworkException() {
 		
 	}
 	
@@ -24,7 +24,7 @@ public class NeurophException extends RuntimeException {
 	 * @param msg
 	 *            The exception message.
 	 */
-	public NeurophException(final String msg) {
+	public NeuroNetworkException(final String msg) {
 		super(msg);
 	}
 
@@ -34,7 +34,7 @@ public class NeurophException extends RuntimeException {
 	 * @param t
 	 *            The other exception.
 	 */
-	public NeurophException(final Throwable t) {
+	public NeuroNetworkException(final Throwable t) {
 		super(t);
 	}
 	
@@ -46,7 +46,7 @@ public class NeurophException extends RuntimeException {
 	 * @param t
 	 *            The other exception.
 	 */
-	public NeurophException(final String msg, final Throwable t) {
+	public NeuroNetworkException(final String msg, final Throwable t) {
 		super(msg, t);
 	}
 }

@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package org.neuroph.core.input;
+package neuralnetwork2.input;
+
+import neuralnetwork2.Connection;
+import neuralnetwork2.Neuron;
+import neuralnetwork2.Weight;
 
 import java.util.List;
-import org.neuroph.core.Connection;
-import org.neuroph.core.Neuron;
-import org.neuroph.core.Weight;
 
 /**
  *

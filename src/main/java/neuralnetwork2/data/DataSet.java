@@ -1,19 +1,4 @@
-/**
- * Copyright 2014 Neuroph Project http://neuroph.sourceforge.net
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-package org.neuroph.core.data;
+package neuralnetwork2.data;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -23,8 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import org.neuroph.core.exceptions.NeurophException;
-import org.neuroph.core.exceptions.VectorSizeMismatchException;
+import neuralnetwork2.exceptions.NeuroNetworkException;
+import neuralnetwork2.exceptions.VectorSizeMismatchException;
 import org.neuroph.util.DataSetColumnType;
 import org.neuroph.util.data.sample.Sampling;
 import org.neuroph.util.data.sample.SubSampling;
@@ -152,10 +137,10 @@ public class DataSet implements List<DataSetRow>, Serializable { // implements
             throw new IllegalArgumentException("Input for dataset row cannot be null!");
 
         if (input.length != inputSize)
-            throw new NeurophException("Input size for given row is different from the data set size!");
+            throw new NeuroNetworkException("Input size for given row is different from the data set size!");
 
         if (isSupervised)
-            throw new NeurophException("Cannot add unsupervised row to supervised data set!");
+            throw new NeuroNetworkException("Cannot add unsupervised row to supervised data set!");
 
         this.addRow(new DataSetRow(input));
     }
@@ -378,14 +363,14 @@ public class DataSet implements List<DataSetRow>, Serializable { // implements
      */
     public void save() {
         
-        if (filePath == null) throw new NeurophException("filePath is null! It must be specified in order to save file!");
+        if (filePath == null) throw new NeuroNetworkException("filePath is null! It must be specified in order to save file!");
         
         try (ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filePath)))) {
             out.writeObject(this);
             out.flush();
             out.close();
         } catch (IOException ioe) {
-            throw new NeurophException(ioe);
+            throw new NeuroNetworkException(ioe);
         }
     }
 
@@ -430,7 +415,7 @@ public class DataSet implements List<DataSetRow>, Serializable { // implements
             out.flush();
 
         } catch (IOException ex) {
-            throw new NeurophException("Error saving data set file!", ex);
+            throw new NeuroNetworkException("Error saving data set file!", ex);
         }
     }
 
@@ -451,11 +436,11 @@ public class DataSet implements List<DataSetRow>, Serializable { // implements
             return dataSet;
 
         } catch(FileNotFoundException fnfe) {
-           throw new NeurophException("Could not find file: '" + filePath + "'!", fnfe); 
+           throw new NeuroNetworkException("Could not find file: '" + filePath + "'!", fnfe);
         } catch (IOException ioe) {
-            throw new NeurophException("Error reading file: '" + filePath + "'!", ioe);
+            throw new NeuroNetworkException("Error reading file: '" + filePath + "'!", ioe);
         } catch (ClassNotFoundException ex) {
-            throw new NeurophException("Class not found while trying to read DataSet object from the stream!", ex);
+            throw new NeuroNetworkException("Class not found while trying to read DataSet object from the stream!", ex);
         } 
     }
 
@@ -523,12 +508,12 @@ public class DataSet implements List<DataSetRow>, Serializable { // implements
             return dataSet;
 
         } catch (FileNotFoundException ex) {
-            throw new NeurophException("Could not find data set file!", ex);
+            throw new NeuroNetworkException("Could not find data set file!", ex);
         } catch (IOException ex) {
-             throw new NeurophException("Error reading data set file!", ex);
+             throw new NeuroNetworkException("Error reading data set file!", ex);
         } catch (NumberFormatException ex) {
              ex.printStackTrace();
-            throw new NeurophException("Bad number format in data set file!", ex); // TODO: add line number!
+            throw new NeuroNetworkException("Bad number format in data set file!", ex); // TODO: add line number!
         }
 
     }
