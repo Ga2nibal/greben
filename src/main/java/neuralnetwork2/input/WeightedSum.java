@@ -6,8 +6,6 @@ import java.util.List;
 
 /**
  * Optimized version of weighted input function
- *
- * @author Zoran Sevarac
  */
 public class WeightedSum extends InputFunction {
 

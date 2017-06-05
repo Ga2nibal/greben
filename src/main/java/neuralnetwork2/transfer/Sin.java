@@ -6,7 +6,6 @@ package neuralnetwork2.transfer;
  * 
  * output = sin(input)
  * </pre>
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Sin extends TransferFunction {
 

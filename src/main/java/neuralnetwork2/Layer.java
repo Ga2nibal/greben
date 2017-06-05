@@ -1,6 +1,8 @@
 package neuralnetwork2;
 
 import neuralnetwork2.events.NeuralNetworkEvent;
+import neuralnetwork2.util.NeuronFactory;
+import neuralnetwork2.util.NeuronProperties;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,7 +15,6 @@ import java.util.List;
  * </pre>
  *
  * @see Neuron
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Layer implements Serializable {
 

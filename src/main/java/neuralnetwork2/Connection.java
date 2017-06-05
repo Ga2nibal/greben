@@ -8,7 +8,6 @@ import java.util.Objects;
  * 
  * @see Weight
  * @see Neuron
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Connection implements Serializable {
 

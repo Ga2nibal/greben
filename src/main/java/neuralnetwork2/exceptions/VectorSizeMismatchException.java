@@ -2,9 +2,6 @@ package neuralnetwork2.exceptions;
 
 /**
  * Thrown to indicate that vector size does not match the network input or training element size.
- *
- * @author Jon Tain
- * @author Zoran Sevarac
  */
 public class VectorSizeMismatchException extends NeuroNetworkException {
 

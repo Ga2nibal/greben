@@ -7,6 +7,10 @@ import neuralnetwork2.exceptions.NeuroNetworkException;
 import neuralnetwork2.exceptions.VectorSizeMismatchException;
 import neuralnetwork2.learning.IterativeLearning;
 import neuralnetwork2.learning.LearningRule;
+import neuralnetwork2.util.NeuralNetworkType;
+import neuralnetwork2.util.plugins.PluginBase;
+import neuralnetwork2.util.random.RangeRandomizer;
+import neuralnetwork2.util.random.WeightsRandomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +25,6 @@ import java.util.*;
  * and setting network specific learning rule.
  * </pre>
  *
- * @author Zoran Sevarac <sevarac@gmail.com>
  * @see Layer
  * @see LearningRule
  */

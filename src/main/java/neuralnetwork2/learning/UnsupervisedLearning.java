@@ -9,8 +9,6 @@ import java.util.Iterator;
 
 /**
  * Base class for all unsupervised learning algorithms.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 abstract public class UnsupervisedLearning extends IterativeLearning implements
 		Serializable {

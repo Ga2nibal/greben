@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  *
- * @author zoran
  */
 public class EuclideanRBF extends InputFunction {
 

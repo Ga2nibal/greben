@@ -1,12 +1,10 @@
 package neuralnetwork2.transfer;
 
 import java.io.Serializable;
-import org.neuroph.util.Properties;
+import neuralnetwork2.util.Properties;
 
 /**
  * Fuzzy trapezoid neuron tranfer function.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Trapezoid extends TransferFunction implements Serializable {
 	

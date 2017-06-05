@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * Performs summing of all input vector elements.
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Sum extends InputFunction implements Serializable {
 

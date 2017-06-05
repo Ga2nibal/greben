@@ -1,12 +1,10 @@
 package neuralnetwork2.transfer;
 
 import java.io.Serializable;
-import org.neuroph.util.Properties;
+import neuralnetwork2.util.Properties;
 
 /**
  * Ramp neuron transfer function.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Ramp extends TransferFunction implements Serializable {
 

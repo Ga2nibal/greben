@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * Performs max function on input vector
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Max extends InputFunction implements Serializable {
 

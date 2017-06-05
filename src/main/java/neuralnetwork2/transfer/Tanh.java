@@ -1,5 +1,7 @@
 package neuralnetwork2.transfer;
+
 import java.io.Serializable;
+import neuralnetwork2.util.Properties;
 
 /**
  * <pre>
@@ -7,8 +9,6 @@ import java.io.Serializable;
  *
  * output = amplitude * tanh(slope * input) = amplitude * ( e^(2*slope*input)-1) / ( e^(2*slope*input)+1 )
  * </pre>
- *
- * @author Zoran Sevarac <sevarac@gmail.com>, Nyefan
  */
 public class Tanh extends TransferFunction implements Serializable {
 

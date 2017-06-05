@@ -10,8 +10,6 @@ import java.util.List;
 /**
  * Performs the vector difference operation on input and
  * weight vector.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Difference extends InputFunction implements Serializable {
 	

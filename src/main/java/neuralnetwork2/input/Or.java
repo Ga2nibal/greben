@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * Performs logic OR operation on input vector.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Or extends InputFunction implements Serializable {
 	

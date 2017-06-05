@@ -17,8 +17,6 @@ import java.util.logging.Logger;
  * and when it iterates all of them, it takes next bufferSize rows. It can be
  * used everywhere where DataSet class is used since it extends it. The rows
  * should be iterated with iterator() interface.
- *
- * @author Zoran Sevarac
  */
 public class BufferedDataSet extends DataSet implements Iterator<DataSetRow> {
 

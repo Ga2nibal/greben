@@ -19,8 +19,6 @@ import java.util.List;
 /**
  * Base class for all supervised learning algorithms.
  * It extends IterativeLearning, and provides general supervised learning principles.
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 abstract public class SupervisedLearning extends IterativeLearning implements
         Serializable {

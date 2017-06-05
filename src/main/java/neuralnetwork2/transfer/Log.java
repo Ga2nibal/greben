@@ -6,7 +6,6 @@ package neuralnetwork2.transfer;
  * 
  * output = log(input)
  * </pre>
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Log extends TransferFunction {
 

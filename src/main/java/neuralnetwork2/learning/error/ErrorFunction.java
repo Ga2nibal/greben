@@ -3,8 +3,6 @@ package neuralnetwork2.learning.error;
 /**
  * Interface for calculating total network error during the learning.
  * Custom error types  can be implemented.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public interface ErrorFunction {
 

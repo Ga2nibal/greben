@@ -3,7 +3,6 @@ package neuralnetwork2.events;
 /**
  * This interface is implemented by classes who are listening to neural network events events (to be defined)
  * NeuralNetworkEvent class holds the information about event.
-* @author Zoran Sevarac <sevarac@gmail.com>
  */
 @FunctionalInterface
 public interface NeuralNetworkEventListener extends  java.util.EventListener {

@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * Performs min function on input vector
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Min extends InputFunction implements Serializable {
 

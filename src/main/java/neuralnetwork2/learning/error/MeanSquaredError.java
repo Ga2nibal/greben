@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 /**
  * Commonly used mean squared error
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public final class MeanSquaredError implements ErrorFunction, Serializable {
 

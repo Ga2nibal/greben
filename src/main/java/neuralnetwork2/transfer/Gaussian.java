@@ -1,7 +1,7 @@
 package neuralnetwork2.transfer;
 
 import java.io.Serializable;
-import org.neuroph.util.Properties;
+import neuralnetwork2.util.Properties;
 
 /**
  * <pre>
@@ -9,8 +9,6 @@ import org.neuroph.util.Properties;
  *             -(x^2) / (2 * sigma^2)
  *  f(x) =    e
  * </pre>
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Gaussian extends TransferFunction implements Serializable {
 	

@@ -2,7 +2,6 @@ package neuralnetwork2.exceptions;
 
 /**
  * Base exception type for Neuroph.
- * @author jheaton
  */
 public class NeuroNetworkException extends RuntimeException {
 	/**

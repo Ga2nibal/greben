@@ -1,14 +1,12 @@
 package neuralnetwork2.transfer;
 
 import java.io.Serializable;
-import org.neuroph.util.Properties;
+import neuralnetwork2.util.Properties;
 
 /**
  * Step neuron transfer function.
  * y = yHigh, x > 0
  * y = yLow, x <= 0
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Step extends TransferFunction implements Serializable {
 

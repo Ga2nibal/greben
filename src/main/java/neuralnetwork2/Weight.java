@@ -8,7 +8,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * Neuron connection weight.
  *
  * @see Connection
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Weight<T> implements java.io.Serializable, Cloneable {
 

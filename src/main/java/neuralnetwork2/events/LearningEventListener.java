@@ -3,8 +3,6 @@ package neuralnetwork2.events;
 /**
  * This interface is implemented by classes who are listening to learning events (iterations, error etc.)
  * LearningEvent class holds the information about event.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 @FunctionalInterface
 public interface LearningEventListener extends  java.util.EventListener {

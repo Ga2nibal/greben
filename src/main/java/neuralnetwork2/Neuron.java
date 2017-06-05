@@ -3,8 +3,6 @@ package neuralnetwork2;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import org.apache.commons.lang3.NotImplementedException;
 
 import neuralnetwork2.input.InputFunction;
 import neuralnetwork2.input.WeightedSum;
@@ -21,7 +19,6 @@ import neuralnetwork2.transfer.TransferFunction;
  * output = transferFunction( inputFunction(inputConnections) )
  * </pre>
  *
- * @author Zoran Sevarac <sevarac@gmail.com>
  * @see InputFunction
  * @see TransferFunction
  */

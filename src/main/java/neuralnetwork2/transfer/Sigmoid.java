@@ -1,7 +1,7 @@
 package neuralnetwork2.transfer;
 
 import java.io.Serializable;
-import org.neuroph.util.Properties;
+import neuralnetwork2.util.Properties;
 
 /**
  * <pre>
@@ -9,7 +9,6 @@ import org.neuroph.util.Properties;
  * 
  * output = 1/(1+ e^(-slope*input))
  * </pre>
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Sigmoid extends TransferFunction implements Serializable {
 	/**

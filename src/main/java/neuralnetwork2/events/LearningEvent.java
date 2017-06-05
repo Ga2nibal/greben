@@ -4,7 +4,6 @@ import neuralnetwork2.learning.LearningRule;
 
 /**
  * This class holds information about the source of some learning event.
-  * @author Zoran Sevarac
  */
 
 public class LearningEvent extends java.util.EventObject {

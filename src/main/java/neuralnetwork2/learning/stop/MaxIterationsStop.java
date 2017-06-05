@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 /**
  * Stops learning rule if specified number of iterations has been reached
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class MaxIterationsStop implements StopCondition, Serializable {
 

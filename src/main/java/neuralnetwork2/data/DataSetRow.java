@@ -4,13 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
-import org.neuroph.util.VectorParser;
+import neuralnetwork2.util.VectorParser;
 
 /**
  * This class represents single data row in a data set. It has input and desired output
  * for supervised learning rules. It can also be used only with input for unsupervised learning rules.
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class DataSetRow implements Serializable {
 

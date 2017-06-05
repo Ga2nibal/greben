@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 /**
  * Stops learning rule if total network error is below some specified value
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class MaxErrorStop implements StopCondition, Serializable {
 

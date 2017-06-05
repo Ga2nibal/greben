@@ -7,8 +7,6 @@ import java.io.Serializable;
 /**
  * Stops learning rule if error change has been too small for specified number
  * of iterations
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class SmallErrorChangeStop implements StopCondition, Serializable {
 

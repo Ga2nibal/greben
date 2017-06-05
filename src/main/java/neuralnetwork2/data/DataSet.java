@@ -10,16 +10,15 @@ import java.util.ListIterator;
 
 import neuralnetwork2.exceptions.NeuroNetworkException;
 import neuralnetwork2.exceptions.VectorSizeMismatchException;
-import org.neuroph.util.DataSetColumnType;
-import org.neuroph.util.data.sample.Sampling;
-import org.neuroph.util.data.sample.SubSampling;
+import neuralnetwork2.util.DataSetColumnType;
+import neuralnetwork2.util.data.sample.Sampling;
+import neuralnetwork2.util.data.sample.SubSampling;
 
 /**
  * This class represents a collection of data rows (DataSetRow instances) used
  * for training and testing neural network.
  * TODO: add logging
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
+ *
  * @see DataSetRow
  * http://openforecast.sourceforge.net/docs/net/sourceforge/openforecast/DataSet.html
  */

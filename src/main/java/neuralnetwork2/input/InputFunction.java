@@ -17,9 +17,6 @@ import java.util.List;
  * 
  * Different neuron input functions can be created by setting different weights and summing functions.
  *</pre>
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
- * @see org.neuroph.core.Neuron
  */
 abstract public class InputFunction implements Serializable {   // this should be functional interface!!!!!!!!
 	

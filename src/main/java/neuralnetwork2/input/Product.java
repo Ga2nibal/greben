@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * Performs multiplication of all input vector elements.
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Product extends InputFunction implements Serializable {
 

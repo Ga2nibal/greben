@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * Calculates squared sum of all input vector elements.
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class SumSqr extends InputFunction implements Serializable {
 

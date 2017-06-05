@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * Performs logic AND operation on input vector.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class And extends InputFunction implements Serializable {
 

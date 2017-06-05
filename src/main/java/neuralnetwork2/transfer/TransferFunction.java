@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 /**
  * Abstract base class for all neuron tranfer functions.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
- * @see org.neuroph.core.Neuron
  */
 abstract public class TransferFunction implements Serializable {
 	

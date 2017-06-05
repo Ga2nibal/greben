@@ -3,12 +3,10 @@ package neuralnetwork2.transfer;
 import java.io.Serializable;
 import java.util.Properties;
 
-import org.neuroph.util.TransferFunctionType;
+import neuralnetwork2.util.TransferFunctionType;
 
 /**
  * Sgn neuron transfer function.
- * 
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 public class Sgn extends TransferFunction implements Serializable {
 	

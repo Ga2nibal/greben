@@ -12,8 +12,6 @@ import java.util.List;
 /**
  * Base class for all iterative learning algorithms. It provides the iterative
  * learning procedure for all of its subclasses.
- *
- * @author Zoran Sevarac <sevarac@gmail.com>
  */
 abstract public class IterativeLearning extends LearningRule implements
         Serializable {
