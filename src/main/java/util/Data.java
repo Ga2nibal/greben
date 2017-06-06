@@ -4,6 +4,7 @@ import model.MetersData;
 import model.Motion;
 import model.MotionPeriod;
 import model.OriginalMotionType;
+import org.apache.commons.io.FilenameUtils;
 import parser.csv.CsvReader;
 import parser.csv.PopulatableFromCsvReader;
 import parser.fdf.FdfDataReader;
@@ -14,6 +15,7 @@ import java.security.InvalidParameterException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Data {
 
@@ -23,14 +25,42 @@ public class Data {
         if (null == folderPath)
             throw new InvalidParameterException("folderPath is not defined");
 
+        File folder = new File(folderPath);
+
+        if(!folder.exists())
+            throw new InvalidParameterException("folderPath is not exists");
+
+        if(!folder.isDirectory())
+            throw new InvalidParameterException("folder path is not a directory. folder path = " + folderPath);
+
         FdfDataReader fdfDataReader = new PopulatableFromFdfDataReader();
         CsvReader csvDataReader = new PopulatableFromCsvReader();
         csvDataReader.setDelimiter(';');
 
-        //TODO: if directory not exist throw exception
+        Map<String, TrainingFilePair> trainingFilePairMap = new HashMap<>();
 
-        //TODO: Collect training pairs from input folder
-        List<TrainingFilePair> trainingPairs = null;
+        for (File file: folder.listFiles()) {
+
+            if(!file.exists() || file.isDirectory())
+                continue;
+
+            String fileName = getFileNameWithoutExtention(file);
+
+            TrainingFilePair trainingFilePair = trainingFilePairMap.get(fileName);
+            if(null == trainingFilePair){
+                trainingFilePair = new TrainingFilePair();
+                trainingFilePairMap.put(fileName, trainingFilePair);
+            }
+
+            if(isFdfFile(file))
+                trainingFilePair.fdfDataFile = file;
+            else if(isCsvFile(file))
+                trainingFilePair.csvTimeFile = file;
+        }
+
+        List<TrainingFilePair> trainingPairs = trainingFilePairMap.values()
+                .stream().filter(TrainingFilePair::isPairPopulated)
+                .collect(Collectors.toList());
 
         Map<OriginalMotionType, List<Motion>> result = new HashMap<>();
 
@@ -41,7 +71,6 @@ public class Data {
                 List<MetersData> datas = fdfDataReader.parse(new InputStreamReader(inFdf), MetersData.class);
                 List<MotionPeriod> periods = csvDataReader.parseCsv(new InputStreamReader(inCsv), MotionPeriod.class);
 
-
                     Transformation.collectMotions(datas, periods, result);
                 }
             }
@@ -50,10 +79,29 @@ public class Data {
         return result;
     }
 
+    private static boolean isFdfFile(File file){
+
+        return "fdf".equals(FilenameUtils.getExtension(file.getName()).toLowerCase());
+    }
+
+    private static boolean isCsvFile(File file){
+
+        return "csv".equals(FilenameUtils.getExtension(file.getName()).toLowerCase());
+    }
+
+    private static String getFileNameWithoutExtention(File file){
+        String fileName = file.getName();
+        return fileName.replaceFirst("[.][^.]+$", "");
+    }
+
     private class TrainingFilePair{
 
         private File fdfDataFile;
         private File csvTimeFile;
+
+        public TrainingFilePair(){
+
+        }
 
         public TrainingFilePair(File fdfDataFile, File csvTimeFile){
 
@@ -69,6 +117,34 @@ public class Data {
 
             this.fdfDataFile = fdfDataFile;
             this.csvTimeFile = csvTimeFile;
+        }
+
+        public File getFdfDataFile() {
+            return fdfDataFile;
+        }
+
+        public void setFdfDataFile(File fdfDataFile) {
+            if(null == fdfDataFile)
+                throw new InvalidParameterException("fdfDataFile is not defined");
+            if(fdfDataFile.exists())
+                throw new InvalidParameterException("fdfDataFile is not exists");
+            this.fdfDataFile = fdfDataFile;
+        }
+
+        public File getCsvTimeFile() {
+            return csvTimeFile;
+        }
+
+        public void setCsvTimeFile(File csvTimeFile) {
+            if(null == csvTimeFile)
+                throw new InvalidParameterException("csvTimeFile is not defined");
+            if(csvTimeFile.exists())
+                throw new InvalidParameterException("csvTimeFile is not exists");
+            this.csvTimeFile = csvTimeFile;
+        }
+
+        public boolean isPairPopulated(){
+            return fdfDataFile != null && csvTimeFile != null;
         }
     }
 }
