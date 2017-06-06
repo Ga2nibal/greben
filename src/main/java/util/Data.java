@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 public class Data {
 
-    public Map<OriginalMotionType, List<Motion>> collectTrainingData(String folderPath)
+    public static Map<OriginalMotionType, List<Motion>> collectTrainingData(String folderPath)
         throws IOException{
 
         if (null == folderPath)
@@ -46,11 +46,7 @@ public class Data {
 
             String fileName = getFileNameWithoutExtention(file);
 
-            TrainingFilePair trainingFilePair = trainingFilePairMap.get(fileName);
-            if(null == trainingFilePair){
-                trainingFilePair = new TrainingFilePair();
-                trainingFilePairMap.put(fileName, trainingFilePair);
-            }
+            TrainingFilePair trainingFilePair = trainingFilePairMap.computeIfAbsent(fileName, k -> new TrainingFilePair());
 
             if(isFdfFile(file))
                 trainingFilePair.fdfDataFile = file;
@@ -94,7 +90,7 @@ public class Data {
         return fileName.replaceFirst("[.][^.]+$", "");
     }
 
-    private class TrainingFilePair{
+    private static class TrainingFilePair{
 
         private File fdfDataFile;
         private File csvTimeFile;
