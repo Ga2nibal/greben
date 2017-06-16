@@ -1,4 +1,4 @@
-package gui;
+package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("src/java/gui/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("PIQ classificator");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();

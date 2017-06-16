@@ -11,7 +11,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
@@ -45,10 +44,11 @@
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="172.0" text="Add training set directory" />
                         <Label layoutX="14.0" layoutY="65.0" prefHeight="25.0" prefWidth="201.0" text="Choose sliced window for Volley" />
                         <TextField layoutX="14.0" layoutY="87.0" prefHeight="18.0" prefWidth="61.0" text="25" />
-                        <TextField layoutX="14.0" layoutY="137.0" prefHeight="25.0" prefWidth="61.0" text="45" />
-                        <Label layoutX="14.0" layoutY="114.0" prefHeight="25.0" prefWidth="201.0" text="Choose sliced window for other hit" />
-                        <Button layoutX="14.0" layoutY="186.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Compare" />
-                        <Label layoutX="14.0" layoutY="164.0" prefHeight="25.0" prefWidth="128.0" text="Compare with ethalon" />
+                        <TextField layoutX="14.0" layoutY="137.0" prefHeight="25.0" prefWidth="61.0" text="47" />
+                        <Label layoutX="14.0" layoutY="114.0" prefHeight="25.0" prefWidth="201.0" text="Choose sliced window for Serve" />
+                        <Label layoutX="14.0" layoutY="162.0" prefHeight="25.0" prefWidth="201.0" text="Choose sliced window for other hit" />
+                        <TextField layoutX="14.0" layoutY="187.0" prefHeight="25.0" prefWidth="61.0" text="45" />
+                        <Button layoutX="471.0" layoutY="193.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="115.0" text="Trainig" />
                      </children>
                   </AnchorPane>
             </content>
@@ -59,6 +59,8 @@
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="99.0" text="Select dataset" />
                         <Button layoutX="16.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Select" />
+                        <Label layoutX="14.0" layoutY="66.0" prefHeight="17.0" prefWidth="151.0" text="Choose number parametrs" />
+                        <TextField layoutX="14.0" layoutY="89.0" prefHeight="18.0" prefWidth="61.0" text="13" />
                      </children>
                   </AnchorPane>
             </content>
@@ -69,6 +71,9 @@
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="172.0" text="Select output directory" />
                         <Button layoutX="16.0" layoutY="34.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="61.0" text="Select" />
+                        <Label layoutX="13.0" layoutY="68.0" prefHeight="25.0" prefWidth="128.0" text="Compare with ethalon" />
+                        <Button layoutX="16.0" layoutY="93.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Compare" />
+                        <Button layoutX="494.0" layoutY="196.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="92.0" text="Run" />
                      </children>
                   </AnchorPane>
               </content>
