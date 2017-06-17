@@ -4,6 +4,8 @@ import model.MetersData;
 import model.Motion;
 import model.MotionPeriod;
 import model.OriginalMotionType;
+import neuralnetwork.base.data.DataSet;
+import neuralnetwork.base.data.DataSetRow;
 import org.apache.commons.io.FilenameUtils;
 import parser.csv.CsvReader;
 import parser.csv.PopulatableFromCsvReader;
@@ -12,12 +14,70 @@ import parser.fdf.PopulatableFromFdfDataReader;
 
 import java.io.*;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Data {
+
+    public Map<OriginalMotionType, DataSet> convertToDataSetsMap(Map<OriginalMotionType, List<Motion>> trainingData, int sliceWindows){
+
+        Map<OriginalMotionType, DataSet> result = new HashMap<>();
+        for (OriginalMotionType k : trainingData.keySet()) {
+            result.put(k, convertToDataSet(trainingData.get(k), sliceWindows));
+        }
+        return result;
+    }
+
+    public DataSet convertToDataSet(List<Motion> trainingData, int sliceWindows){
+
+
+        List<DataSetRow> rows = trainingData.stream().map(m -> convertToDataSetRow(m, sliceWindows))
+                .collect(Collectors.toList());
+        DataSet result = new DataSet(rows.get(0).getInput().length);
+        result.addAll(rows);
+        return result;
+    }
+
+    public DataSetRow convertToDataSetRow(Motion motion, int sliceWindow){
+
+        DataSetRow result;
+        if(motion.getMetersData().size() < sliceWindow)
+            result = null;
+        else if(motion.getMetersData().size() == sliceWindow)
+        {
+            List<Double> doubles = new ArrayList<>();
+            for (MetersData metersData: motion.getMetersData()) {
+                doubles.addAll(metersData.toList());
+            }
+            double[] input = doubles.stream().mapToDouble(Double::doubleValue).toArray();
+            result = new DataSetRow(input);
+        }
+        else {
+
+            int metersDataSize = motion.getMetersData().size();
+            int greaterOn = metersDataSize - sliceWindow;
+//            int[] skipMetersData = new int[greaterOn];
+            List<Integer> skipMetersData = new ArrayList<>();
+            for(int i = 0; i < greaterOn; i++){
+//                skipMetersData[i] = ((metersDataSize - 1) / greaterOn) * i;
+                skipMetersData.add(i);
+            }
+
+            List<Double> doubles = new ArrayList<>();
+            for (int i = 0; i < metersDataSize; i++) {
+                if(skipMetersData.contains(i))
+                    continue;
+                doubles.addAll(motion.getMetersData().get(i).toList());
+            }
+            double[] input = doubles.stream().mapToDouble(Double::doubleValue).toArray();
+            result = new DataSetRow(input);
+        }
+
+        return result;
+    }
 
     public static Map<OriginalMotionType, List<Motion>> collectTrainingData(String folderPath)
         throws IOException{

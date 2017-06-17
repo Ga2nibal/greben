@@ -5,6 +5,8 @@ import org.apache.commons.csv.CSVRecord;
 import parser.PopulatableFromCsv;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MetersData implements PopulatableFromCsv {
 
@@ -312,6 +314,35 @@ public class MetersData implements PopulatableFromCsv {
                 this.quaternionX, this.quaternionY, this.quaternionZ, this.pressure, this.temperature,
                 this.latitude, this.longitude, this.altitude, this.speed, this.precisionDilution, this.satellites
         };
+        return result;
+    }
+
+    public List<Double> toList() {
+
+        List<Double> result = new ArrayList<Double>();
+        result.add((double) this.time);
+        result.add(this.accelerationX);
+        result.add(this.accelerationY);
+        result.add(this.accelerationZ);
+        result.add(this.linearAccelerationX);
+        result.add(this.linearAccelerationY);
+        result.add(this.linearAccelerationZ);
+        result.add(this.qyroX);
+        result.add(this.qyroY);
+        result.add(this.qyroZ);
+        result.add(this.quaternionW);
+        result.add(this.quaternionX);
+        result.add(this.quaternionY);
+        result.add(this.quaternionZ);
+        result.add(this.pressure);
+        result.add(this.temperature);
+        result.add(this.latitude);
+        result.add(this.longitude);
+        result.add(this.altitude);
+        result.add(this.speed);
+        result.add(this.precisionDilution);
+        result.add(this.satellites);
+
         return result;
     }
 
