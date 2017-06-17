@@ -29,7 +29,6 @@ public class PopulatableFromCsvReader<T extends PopulatableFromCsv> implements C
 //                    CSVFormat.DEFAULT.withDelimiter(delimiter)
 //                    .withSkipHeaderRecord(false).withHeader().parse(reader);
             for (CSVRecord record : records) {
-                System.out.println(record);
                 T instance = (T) clazz.newInstance();
                 instance.populateFromCsv(record);
                 result.add(instance);

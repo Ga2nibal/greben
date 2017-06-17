@@ -10,6 +10,7 @@ import java.util.List;
 
 public class MetersData implements PopulatableFromCsv {
 
+    public static final int UsedMetersDataCount = 13;
     private static final int MetersDataCount = 22;
 
     private long time;
@@ -308,19 +309,23 @@ public class MetersData implements PopulatableFromCsv {
 
     public double[] toArray(){
 
+//        double[] result = new double[]{
+//                this.time, this.accelerationX,this.accelerationY,this.accelerationZ, this.linearAccelerationX,
+//                this.linearAccelerationY, this.linearAccelerationZ,this.qyroX, this.qyroY, this.qyroZ, this.quaternionW,
+//                this.quaternionX, this.quaternionY, this.quaternionZ, this.pressure, this.temperature,
+//                this.latitude, this.longitude, this.altitude, this.speed, this.precisionDilution, this.satellites
+//        };
         double[] result = new double[]{
-                this.time, this.accelerationX,this.accelerationY,this.accelerationZ, this.linearAccelerationX,
+                this.accelerationX,this.accelerationY,this.accelerationZ, this.linearAccelerationX,
                 this.linearAccelerationY, this.linearAccelerationZ,this.qyroX, this.qyroY, this.qyroZ, this.quaternionW,
-                this.quaternionX, this.quaternionY, this.quaternionZ, this.pressure, this.temperature,
-                this.latitude, this.longitude, this.altitude, this.speed, this.precisionDilution, this.satellites
+                this.quaternionX, this.quaternionY, this.quaternionZ
         };
         return result;
     }
 
     public List<Double> toList() {
 
-        List<Double> result = new ArrayList<Double>();
-        result.add((double) this.time);
+        List<Double> result = new ArrayList<>();
         result.add(this.accelerationX);
         result.add(this.accelerationY);
         result.add(this.accelerationZ);
@@ -334,14 +339,6 @@ public class MetersData implements PopulatableFromCsv {
         result.add(this.quaternionX);
         result.add(this.quaternionY);
         result.add(this.quaternionZ);
-        result.add(this.pressure);
-        result.add(this.temperature);
-        result.add(this.latitude);
-        result.add(this.longitude);
-        result.add(this.altitude);
-        result.add(this.speed);
-        result.add(this.precisionDilution);
-        result.add(this.satellites);
 
         return result;
     }

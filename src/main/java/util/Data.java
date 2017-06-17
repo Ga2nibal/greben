@@ -14,37 +14,45 @@ import parser.fdf.PopulatableFromFdfDataReader;
 
 import java.io.*;
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Data {
 
-    public Map<OriginalMotionType, DataSet> convertToDataSetsMap(Map<OriginalMotionType, List<Motion>> trainingData, int sliceWindows){
+    public static Map<OriginalMotionType, DataSet> convertToDataSetsMap(Map<OriginalMotionType, List<Motion>> trainingData,
+                                                                 int sliceWindows){
 
         Map<OriginalMotionType, DataSet> result = new HashMap<>();
         for (OriginalMotionType k : trainingData.keySet()) {
-            result.put(k, convertToDataSet(trainingData.get(k), sliceWindows));
+            DataSet dataSet = convertToDataSet(trainingData.get(k), sliceWindows);
+            if(null == dataSet)
+                continue;
+            result.put(k, dataSet);
         }
         return result;
     }
 
-    public DataSet convertToDataSet(List<Motion> trainingData, int sliceWindows){
+    public static DataSet convertToDataSet(List<Motion> trainingData, int sliceWindows){
+
+
+
 
 
         List<DataSetRow> rows = trainingData.stream().map(m -> convertToDataSetRow(m, sliceWindows))
-                .collect(Collectors.toList());
+                .filter(Objects::nonNull).collect(Collectors.toList());
+        if(rows.isEmpty())
+            return null;
         DataSet result = new DataSet(rows.get(0).getInput().length);
         result.addAll(rows);
         return result;
     }
 
-    public DataSetRow convertToDataSetRow(Motion motion, int sliceWindow){
+    public static DataSetRow convertToDataSetRow(Motion motion, int sliceWindow){
 
         DataSetRow result;
-        if(motion.getMetersData().size() < sliceWindow)
+        if(motion.getMetersData().isEmpty())
+            return null;
+        else if(motion.getMetersData().size() < sliceWindow)
             result = null;
         else if(motion.getMetersData().size() == sliceWindow)
         {
