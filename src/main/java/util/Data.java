@@ -49,23 +49,28 @@ public class Data {
 
     public static DataSetRow convertToDataSetRow(Motion motion, int sliceWindow){
 
+        return convertToDataSetRow(motion.getMetersData(), sliceWindow);
+    }
+
+    public static DataSetRow convertToDataSetRow(List<MetersData>  metersData, int sliceWindow){
+
         DataSetRow result;
-        if(motion.getMetersData().isEmpty())
+        if(metersData.isEmpty())
             return null;
-        else if(motion.getMetersData().size() < sliceWindow)
+        else if(metersData.size() < sliceWindow)
             result = null;
-        else if(motion.getMetersData().size() == sliceWindow)
+        else if(metersData.size() == sliceWindow)
         {
             List<Double> doubles = new ArrayList<>();
-            for (MetersData metersData: motion.getMetersData()) {
-                doubles.addAll(metersData.toList());
+            for (MetersData md: metersData) {
+                doubles.addAll(md.toList());
             }
             double[] input = doubles.stream().mapToDouble(Double::doubleValue).toArray();
             result = new DataSetRow(input);
         }
         else {
 
-            int metersDataSize = motion.getMetersData().size();
+            int metersDataSize = metersData.size();
             int greaterOn = metersDataSize - sliceWindow;
 //            int[] skipMetersData = new int[greaterOn];
             List<Integer> skipMetersData = new ArrayList<>();
@@ -78,7 +83,7 @@ public class Data {
             for (int i = 0; i < metersDataSize; i++) {
                 if(skipMetersData.contains(i))
                     continue;
-                doubles.addAll(motion.getMetersData().get(i).toList());
+                doubles.addAll(metersData.get(i).toList());
             }
             double[] input = doubles.stream().mapToDouble(Double::doubleValue).toArray();
             result = new DataSetRow(input);
