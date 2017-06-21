@@ -36,7 +36,7 @@ public class DataTest {
         Map<OriginalMotionType, List<Motion>> trainingSet =
                 Data.collectTrainingData(file.getAbsolutePath());
 
-        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow);
+        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow, sliceWindow);
 
         Assert.assertNotNull(dtaSetsMap);
         Assert.assertEquals(1, dtaSetsMap.size());
@@ -55,7 +55,7 @@ public class DataTest {
         Map<OriginalMotionType, List<Motion>> trainingSet =
                 Data.collectTrainingData(file.getAbsolutePath());
 
-        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow);
+        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow, sliceWindow);
 
         Assert.assertNotNull(dtaSetsMap);
         Assert.assertEquals(1, dtaSetsMap.size());
@@ -74,7 +74,7 @@ public class DataTest {
         Map<OriginalMotionType, List<Motion>> trainingSet =
                 Data.collectTrainingData(file.getAbsolutePath());
 
-        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow);
+        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow, sliceWindow);
 
         Assert.assertNotNull(dtaSetsMap);
         Assert.assertEquals(1, dtaSetsMap.size());
@@ -93,7 +93,7 @@ public class DataTest {
         Map<OriginalMotionType, List<Motion>> trainingSet =
                 Data.collectTrainingData(file.getAbsolutePath());
 
-        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow);
+        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow, sliceWindow);
 
         Assert.assertNotNull(dtaSetsMap);
         Assert.assertEquals(0, dtaSetsMap.size());
