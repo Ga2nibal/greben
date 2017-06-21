@@ -1,5 +1,6 @@
 import model.MetersData;
 import model.Motion;
+import model.MotionPeriod;
 import model.OriginalMotionType;
 import neuralnetwork.base.Layer;
 import neuralnetwork.base.NeuralNetwork;
@@ -32,21 +33,10 @@ public class Program {
             MotionDetector motionDetector = new MotionDetector(trainingDirPath,
                     volleyWindow, otherWindow);
 
-            List<MetersData> datas;
-            FdfDataReader fdfDataReader = new PopulatableFromFdfDataReader();
-            File file = new File(inputFilePath);
-            try (InputStream inFdf = new FileInputStream(file)) {
-                datas = fdfDataReader.parse(new InputStreamReader(inFdf), MetersData.class);
-            }
 
-            DataSetRow drw = Data.convertToDataSetRow(datas, sliceWindow);
+            List<MotionPeriod> predictedPeriod = motionDetector.predictMotionPeriods(inputFilePath);
 
-
-            netwrk.setInput(drw.getInput());
-            netwrk.calculate();
-            double[] output = netwrk.getOutput();
-
-            System.out.println("output: " + Arrays.toString(output));
+            System.out.println("output: " + Arrays.toString(predictedPeriod.toArray()));
             System.out.println("Press any key to exit...");
             System.in.read();
         }

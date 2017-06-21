@@ -1,6 +1,8 @@
 package util;
 
+import model.MetersData;
 import model.Motion;
+import model.MotionPeriod;
 import model.OriginalMotionType;
 import neuralnetwork.base.Layer;
 import neuralnetwork.base.NeuralNetwork;
@@ -8,9 +10,10 @@ import neuralnetwork.base.data.DataSet;
 import neuralnetwork.base.data.DataSetRow;
 import neuralnetwork.factories.NeuralNetworkFactory;
 import neuralnetwork.implementation.leaning.KohonenLearning;
+import parser.fdf.FdfDataReader;
+import parser.fdf.PopulatableFromFdfDataReader;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +54,22 @@ public class MotionDetector {
         volleyNetwrk = buildVolleyNeuralNetwork(dtaSetsMap, volleyWindow);
         forehandNetwrk = buildForehandSubTypesNeuralNetwork(dtaSetsMap, otherWindow);
         backhandNetwrk = buildBackhandSubTypesNeuralNetwork(dtaSetsMap, otherWindow);
+    }
+
+    public List<MotionPeriod> predictMotionPeriods(String inputFilePath) throws IOException{
+        List<MetersData> datas;
+        FdfDataReader fdfDataReader = new PopulatableFromFdfDataReader();
+        File file = new File(inputFilePath);
+        try (InputStream inFdf = new FileInputStream(file)) {
+            datas = fdfDataReader.parse(new InputStreamReader(inFdf), MetersData.class);
+        }
+        return predictMotionPeriods(datas);
+    }
+
+    public List<MotionPeriod> predictMotionPeriods(List<MetersData> metersData){
+
+        
+
     }
 
     public OriginalMotionType predictVollyMotion(DataSetRow dsr){
