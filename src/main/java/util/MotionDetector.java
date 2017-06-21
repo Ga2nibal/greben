@@ -30,7 +30,7 @@ public class MotionDetector {
     private final int volleyWindow;
     private final int otherWindow;
 
-    public MotionDetector(String trainigDataDir,
+    public MotionDetector(File trainigDataDir,
                           int volleyWindow, int otherWindow) throws IOException{
         if(volleyWindow <= 0)
             throw new InvalidParameterException("volleyWindow must be greater than zero. volleyWindow = "
@@ -42,10 +42,8 @@ public class MotionDetector {
         this.volleyWindow = volleyWindow;
         this.otherWindow = otherWindow;
 
-        File fileYtainigDir = new File(trainigDataDir);
-
         Map<OriginalMotionType, List<Motion>> trainingSet =
-                Data.collectTrainingData(fileYtainigDir.getAbsolutePath());
+                Data.collectTrainingData(trainigDataDir.getAbsolutePath());
 
         Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet,
                 volleyWindow, otherWindow);
@@ -57,14 +55,22 @@ public class MotionDetector {
         backhandNetwrk = buildBackhandSubTypesNeuralNetwork(dtaSetsMap, otherWindow);
     }
 
-    public List<MotionPeriod> predictMotionPeriods(String inputFilePath) throws IOException{
+    public MotionDetector(String trainigDataDir,
+                          int volleyWindow, int otherWindow) throws IOException{
+        this(new File(trainigDataDir), volleyWindow, otherWindow);
+    }
+
+    public List<MotionPeriod> predictMotionPeriods(File file) throws IOException{
         List<MetersData> datas;
         FdfDataReader fdfDataReader = new PopulatableFromFdfDataReader();
-        File file = new File(inputFilePath);
         try (InputStream inFdf = new FileInputStream(file)) {
             datas = fdfDataReader.parse(new InputStreamReader(inFdf), MetersData.class);
         }
         return predictMotionPeriods(datas);
+    }
+
+    public List<MotionPeriod> predictMotionPeriods(String inputFilePath) throws IOException{
+        return predictMotionPeriods(new File(inputFilePath));
     }
 
     public List<MotionPeriod> predictMotionPeriods(List<MetersData> metersData){

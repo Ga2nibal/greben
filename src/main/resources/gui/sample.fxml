@@ -41,14 +41,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="14.0" layoutY="37.0" mnemonicParsing="false" text="Add set" />
+                        <Button layoutX="14.0" layoutY="37.0" mnemonicParsing="false" text="Add set"
+                                fx:id="addSetButton" onAction="#onClickAddSetButtonMethod"/>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="172.0" text="Add training set directory" />
                         <Label layoutX="14.0" layoutY="65.0" prefHeight="25.0" prefWidth="201.0" text="Choose sliced window for Volley" />
-                        <TextField layoutX="14.0" layoutY="87.0" prefHeight="18.0" prefWidth="61.0" text="25" />
+                        <TextField layoutX="14.0" layoutY="87.0" prefHeight="18.0" prefWidth="61.0" text="25"
+                                   fx:id="volleyWindowText"/>
                         <TextField layoutX="14.0" layoutY="137.0" prefHeight="25.0" prefWidth="61.0" text="47" />
                         <Label layoutX="14.0" layoutY="114.0" prefHeight="25.0" prefWidth="201.0" text="Choose sliced window for Serve" />
                         <Label layoutX="14.0" layoutY="162.0" prefHeight="25.0" prefWidth="201.0" text="Choose sliced window for other hit" />
-                        <TextField layoutX="14.0" layoutY="187.0" prefHeight="25.0" prefWidth="61.0" text="45" />
+                        <TextField layoutX="14.0" layoutY="187.0" prefHeight="25.0" prefWidth="61.0" text="45" fx:id="otherWindowText"/>
+
                         <Button fx:id="trainingButton" onAction="#onClicktrainingButtonMethod" layoutX="471.0" layoutY="193.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="115.0" text="Trainig" />
                      </children>
                   </AnchorPane>
@@ -59,7 +62,8 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="99.0" text="Select dataset" />
-                        <Button layoutX="16.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Select" />
+                        <Button layoutX="16.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Select"
+                                fx:id="selectInputButton" onAction="#onClickSelectInputButtonMethod"/>
                         <Label layoutX="14.0" layoutY="66.0" prefHeight="17.0" prefWidth="151.0" text="Choose number parametrs" />
                         <TextField layoutX="14.0" layoutY="89.0" prefHeight="18.0" prefWidth="61.0" text="13" />
                      </children>
@@ -71,10 +75,12 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="172.0" text="Select output directory" />
-                        <Button layoutX="16.0" layoutY="34.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="61.0" text="Select" />
+                        <Button layoutX="16.0" layoutY="34.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="61.0" text="Select"
+                                fx:id="selectOutputButton" onAction="#onClickSselectOutputButtonMethod"/>
                         <Label layoutX="13.0" layoutY="68.0" prefHeight="25.0" prefWidth="128.0" text="Compare with ethalon" />
                         <Button layoutX="16.0" layoutY="93.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Compare" />
-                        <Button layoutX="494.0" layoutY="196.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="92.0" text="Run" />
+                        <Button layoutX="494.0" layoutY="196.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="92.0" text="Run"
+                                fx:id="runButton" onAction="#onClickRunButtonMethod" />
                      </children>
                   </AnchorPane>
               </content>

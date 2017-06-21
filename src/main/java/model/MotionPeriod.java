@@ -105,6 +105,16 @@ public class MotionPeriod implements PopulatableFromCsv {
     }
 
     @Override
+    public String toString() {
+        return "MotionPeriod{" +
+                ", originalMotionType=" + originalMotionType != null ? originalMotionType.name() : "[null]" +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", duration=" + duration +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
