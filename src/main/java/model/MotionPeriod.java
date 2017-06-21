@@ -29,6 +29,17 @@ public class MotionPeriod implements PopulatableFromCsv {
         this.endTime = endTime;
         this.duration = duration;
     }
+    public MotionPeriod(OriginalMotionType originalMotionType, int startTime, int endTime) {
+
+        if(null == originalMotionType)
+            throw new InvalidParameterException("originalMotionType is not defined. [originalMotionType can not be null");
+
+        this.originalMotionType = originalMotionType;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.duration = endTime - startTime;
+    }
+
 
     public void populateFromCsv(CSVRecord csvRecord){
 

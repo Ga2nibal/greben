@@ -15,6 +15,7 @@ import parser.fdf.PopulatableFromFdfDataReader;
 
 import java.io.*;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -68,8 +69,30 @@ public class MotionDetector {
 
     public List<MotionPeriod> predictMotionPeriods(List<MetersData> metersData){
 
-        
+        List<MotionPeriod> result = new ArrayList<>();
+        for(int i = volleyWindow; i <= metersData.size(); i++)
+        {
+            DataSetRow dsr = Data.convertToDataSetRow(metersData.subList(i-volleyWindow, i), volleyWindow);
+            OriginalMotionType omt = predictVollyMotion(dsr);
+            if(omt != OriginalMotionType.UNDEFINED) {
+                MotionPeriod mp = new MotionPeriod(omt, metersData.get(i-volleyWindow).getTime(),
+                        metersData.get(i-1).getTime());
+                result.add(mp);
+            }
+        }
 
+        for(int i = otherWindow; i <= metersData.size(); i++)
+        {
+            DataSetRow dsr = Data.convertToDataSetRow(metersData.subList(i-otherWindow, i), otherWindow);
+            OriginalMotionType omt = predictOtherMotion(dsr);
+            if(omt != OriginalMotionType.UNDEFINED) {
+                MotionPeriod mp = new MotionPeriod(omt, metersData.get(i-volleyWindow).getTime(),
+                        metersData.get(i-1).getTime());
+                result.add(mp);
+            }
+        }
+
+        return result;
     }
 
     public OriginalMotionType predictVollyMotion(DataSetRow dsr){

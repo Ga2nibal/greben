@@ -13,7 +13,7 @@ public class MetersData implements PopulatableFromCsv {
     public static final int UsedMetersDataCount = 13;
     private static final int MetersDataCount = 22;
 
-    private long time;
+    private int time;
     private double accelerationX;
     private double accelerationY;
     private double accelerationZ;
@@ -38,7 +38,7 @@ public class MetersData implements PopulatableFromCsv {
 
     public MetersData(){}
 
-    public MetersData(long time, double accelerationX, double accelerationY, double accelerationZ,
+    public MetersData(int time, double accelerationX, double accelerationY, double accelerationZ,
                       double linearAccelerationX, double linearAccelerationY, double linearAccelerationZ, double qyroX,
                       double qyroY, double qyroZ, double quaternionW, double quaternionX, double quaternionY,
                       double quaternionZ, double pressure, double temperature, double latitude, double longitude,
@@ -75,7 +75,7 @@ public class MetersData implements PopulatableFromCsv {
             throw new InvalidParameterException("metersData must be double array with " + MetersDataCount + " elements");
 
         int i = 0;
-        this.time = (long)metersData[i++];
+        this.time = (int)metersData[i++];
         this.accelerationX = metersData[i++];
         this.accelerationY = metersData[i++];
         this.accelerationZ = metersData[i++];
@@ -107,7 +107,7 @@ public class MetersData implements PopulatableFromCsv {
             throw new InvalidParameterException("csvRecord size must be " + MetersDataCount
                 + ". but actual size: " + csvRecord.size());
 
-        this.time = Long.parseLong(csvRecord.get("Time")); //TODO: in our data time is not second. correct this
+        this.time = Integer.parseInt(csvRecord.get("Time")); //TODO: in our data time is not second. correct this
         this.accelerationX = Double.parseDouble(csvRecord.get("AccelerationX"));
         this.accelerationY = Double.parseDouble(csvRecord.get("AccelerationY"));
         this.accelerationZ = Double.parseDouble(csvRecord.get("AccelerationZ"));
@@ -131,11 +131,11 @@ public class MetersData implements PopulatableFromCsv {
         this.satellites = Double.parseDouble(csvRecord.get("Satellites"));
     }
 
-    public long getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
