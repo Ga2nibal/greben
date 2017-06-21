@@ -1,6 +1,7 @@
 package model;
 
 public enum OriginalMotionType {
+    UNDEFINED,
     FOREHAND_FLAT,
     FOREHAND_LIFTED,
     FOREHAND_SLICED,
@@ -9,6 +10,5 @@ public enum OriginalMotionType {
     BACKHAND_SLICED,
     SMASH,
     VOLLEY_BACKHAND,
-    VOLLEY_FOREHAND,
-    UNDEFINED
+    VOLLEY_FOREHAND
 }

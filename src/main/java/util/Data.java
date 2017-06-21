@@ -20,10 +20,14 @@ import java.util.stream.Collectors;
 public class Data {
 
     public static Map<OriginalMotionType, DataSet> convertToDataSetsMap(Map<OriginalMotionType, List<Motion>> trainingData,
-                                                                 int sliceWindows){
+                                                                        int volleyWindow, int otherWindow){
 
         Map<OriginalMotionType, DataSet> result = new HashMap<>();
         for (OriginalMotionType k : trainingData.keySet()) {
+            int sliceWindows = otherWindow;
+            if(OriginalMotionType.VOLLEY_BACKHAND == k
+                    || OriginalMotionType.VOLLEY_FOREHAND == k)
+                sliceWindows = volleyWindow;
             DataSet dataSet = convertToDataSet(trainingData.get(k), sliceWindows);
             if(null == dataSet)
                 continue;
@@ -34,12 +38,12 @@ public class Data {
 
     public static DataSet convertToDataSet(List<Motion> trainingData, int sliceWindows){
 
-
-
-
-
-        List<DataSetRow> rows = trainingData.stream().map(m -> convertToDataSetRow(m, sliceWindows))
-                .filter(Objects::nonNull).collect(Collectors.toList());
+        List<DataSetRow> rows = trainingData.stream().map(m -> {
+            DataSetRow dsr = convertToDataSetRow(m, sliceWindows);
+            if(dsr != null)
+                dsr.setLabel(m.getOriginalMotionType().name());
+            return dsr;
+        }).filter(Objects::nonNull).collect(Collectors.toList());
         if(rows.isEmpty())
             return null;
         DataSet result = new DataSet(rows.get(0).getInput().length);

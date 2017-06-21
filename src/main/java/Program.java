@@ -10,9 +10,10 @@ import neuralnetwork.implementation.leaning.KohonenLearning;
 import parser.fdf.FdfDataReader;
 import parser.fdf.PopulatableFromFdfDataReader;
 import util.Data;
+import util.GroupMotionType;
+import util.MotionDetector;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +26,11 @@ public class Program {
             String trainingDirPath = args[0];
             String inputFilePath = args[1];
 
-            int sliceWindow = 15;
+            int volleyWindow = 15;
+            int otherWindow = 46;
 
-            NeuralNetwork<KohonenLearning> netwrk = BuildNeuralNetwork(trainingDirPath, sliceWindow);
+            MotionDetector motionDetector = new MotionDetector(trainingDirPath,
+                    volleyWindow, otherWindow);
 
             List<MetersData> datas;
             FdfDataReader fdfDataReader = new PopulatableFromFdfDataReader();
@@ -51,24 +54,5 @@ public class Program {
 
             System.out.println("Program finished with error: " + ex.toString());
         }
-    }
-
-    public static NeuralNetwork<KohonenLearning> BuildNeuralNetwork(String trainingDirectoryPath, int sliceWindow) throws IOException{
-
-        File file = new File(trainingDirectoryPath);
-
-        Map<OriginalMotionType, List<Motion>> trainingSet =
-                Data.collectTrainingData(file.getAbsolutePath());
-
-        Map<OriginalMotionType, DataSet> dtaSetsMap = Data.convertToDataSetsMap(trainingSet, sliceWindow);
-
-        DataSet testDataSet = dtaSetsMap.get(OriginalMotionType.FOREHAND_FLAT);
-
-        NeuralNetwork<KohonenLearning> network =
-                NeuralNetworkFactory.createKohonen(testDataSet.getInputSize(), 2);
-        network.addLayer(new Layer(8));
-
-        network.learn(testDataSet);
-        return network;
     }
 }
